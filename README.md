@@ -1,6 +1,10 @@
+# Design System
+
+I followed [News Feed (e.g. Facebook)
+](https://www.greatfrontend.com/questions/system-design/news-feed-facebook#interface-definition-api) to design this application. It follows the [RADIO framework](https://www.greatfrontend.com/system-design/framework).
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# Getting Started
 
 First, run the development server:
 
