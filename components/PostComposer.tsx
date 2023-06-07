@@ -1,9 +1,8 @@
 'use client';
 
-import { PaperAirplaneIcon } from '@heroicons/react/24/outline';
-import axios from 'axios';
 import { useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
+import { PaperPlaneIcon } from '@radix-ui/react-icons';
 
 const PostComposer = () => {
   const [text, setText] = useState('');
@@ -26,7 +25,7 @@ const PostComposer = () => {
         } rounded-full p-2 inline-flex items-center justify-center cursor-pointer`}
         onClick={handleSubmit}
       >
-        <PaperAirplaneIcon className="text-white w-4 h-4" />
+        <PaperPlaneIcon className='text-white' />
       </div>
       <Toaster />
     </div>

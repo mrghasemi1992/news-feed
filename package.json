@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@heroicons/react": "^2.0.18",
     "@next-auth/prisma-adapter": "^0.4.4-canary.81",
     "@prisma/client": "^4.15.0",
     "@radix-ui/colors": "^0.1.8",

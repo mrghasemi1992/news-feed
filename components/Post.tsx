@@ -1,10 +1,7 @@
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
-import {
-  HeartIcon,
-  ChatBubbleOvalLeftIcon,
-} from '@heroicons/react/24/outline';
 import { Post } from '../types';
+import { ChatBubbleIcon, HeartIcon } from '@radix-ui/react-icons';
 
 dayjs.extend(relativeTime);
 
@@ -36,11 +33,11 @@ const Post = ({ post, isFirst }: Props) => {
           <p className="text-sm">{post.content}</p>
           <div className="flex gap-x-3">
             <div className="flex gap-x-1 items-center text-xs text-gray-500">
-              <HeartIcon className="h-5 w-5 text-gray-500" />
+              <HeartIcon />
               {post.reactions.likes}
             </div>
             <div className="flex gap-x-1 items-center text-xs text-gray-500">
-              <ChatBubbleOvalLeftIcon className="h-5 w-5 text-gray-500" />
+              <ChatBubbleIcon />
               {post.reactions.comments?.length ?? 0}
             </div>
           </div>
