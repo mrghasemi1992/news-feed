@@ -11,12 +11,13 @@ datasource db {
 }
 
 model Post {
-  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  id           String    @id @default(auto()) @map("_id") @db.ObjectId
   created_time DateTime
   content      String
-  author       User     @relation(fields: [userId], references: [id])
+  author       User      @relation(fields: [userId], references: [id])
   image_url    String
-  userId       String   @db.ObjectId
+  userId       String    @db.ObjectId
+  comments     Comment[]
 }
 
 model Comment {
@@ -25,14 +26,40 @@ model Comment {
   userId       String   @db.ObjectId
   created_time DateTime
   content      String
+  Post         Post?    @relation(fields: [postId], references: [id])
+  postId       String?  @db.ObjectId
 }
 
 model User {
-  id                String    @id @default(auto()) @map("_id") @db.ObjectId
-  firstName         String
-  familyName        String
-  username          String
-  profile_photo_url String
-  Post              Post[]
-  Comment           Comment[]
+  id             String    @id @default(auto()) @map("_id") @db.ObjectId
+  name           String?
+  email          String?   @unique
+  emailVerified  DateTime?
+  image          String?
+  hashedPassword String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  favoriteIds    String[]  @db.ObjectId
+  Post    Post[]
+  Comment Comment[]
+  Account Account[]
+}
+
+model Account {
+  id                String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId            String  @db.ObjectId
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.String
+  access_token      String? @db.String
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.String
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
 }
